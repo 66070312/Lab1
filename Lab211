@@ -1,0 +1,16 @@
+import java.util.*;
+public class Lab211 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Input your money : ");
+        double money = sc.nextDouble();
+        System.out.println("Input your account type : ");
+        char type = sc.next().charAt(0);
+        switch (type) {
+            case 'A' -> System.out.println(money*101.5/100);
+            case 'B' -> System.out.println(money*102/100);
+            case 'C' -> System.out.println(money*101.5/100);
+            case 'X' -> System.out.println(money*105/100);
+        }
+    }
+}
