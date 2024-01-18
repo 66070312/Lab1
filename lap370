@@ -1,0 +1,10 @@
+import java.util.*;
+public class Lab370 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int high = sc.nextInt();
+        for (int i=1; i<=high; i++){
+            System.out.println("#-#-#-#-#");
+        }
+    }
+}
