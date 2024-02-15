@@ -1,0 +1,40 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class CalculatorTwoGui {
+    private JFrame fr;
+    private JPanel Pn;
+    private JButton bn1, bn2, bn3, bn4, bn5, bn6, bn7, bn8, bn9,
+            bn10, bn11, bn12, bn13, bn14, bn15, bn16;
+    private JTextField text;
+    
+    public CalculatorTwoGui(){
+        fr = new JFrame("My Calculator");
+        Pn = new JPanel();
+        JButton[] button = {bn1, bn2, bn3, bn4, bn5, bn6, bn7, bn8, bn9,
+            bn10, bn11, bn12, bn13, bn14, bn15, bn16};
+        String[] buttonlist = {"7", "8", "9", "+", "4", "5", "6", "-", "1",
+            "2", "3", "x", "0", "C", "=", "/"};
+        for (int i = 0; i<16; i++){
+            button[i] = new JButton(buttonlist[i]);
+        }
+        text = new JTextField();
+        
+        fr.add(text, BorderLayout.NORTH);
+        
+        Pn.setLayout(new GridLayout(4, 4));
+        for (JButton i: button){
+           Pn.add(i);
+        }
+        fr.add(Pn);
+        
+        fr.setSize(300, 300);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        new CalculatorTwoGui();
+    }
+}
