@@ -1,0 +1,31 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class CalculatorOneGUI {
+    private JFrame fr;
+    private JPanel p1;
+    private JTextField T1, T2, T3;
+    public CalculatorOneGUI(){
+        fr = new JFrame("เครื่องคิดเลข");
+        fr.setLayout(new GridLayout(4, 1));
+        p1 = new JPanel();
+        T1 = new JTextField();
+        T2 = new JTextField();
+        T3 = new JTextField();
+        fr.add(T1);
+        fr.add(T2);
+        p1.add(new JButton("บวก"));
+        p1.add(new JButton("ลบ"));
+        p1.add(new JButton("คูณ"));
+        p1.add(new JButton("หาร"));
+        fr.add(p1);
+        fr.add(T3);
+        fr.setSize(400, 200);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+    }
+    public static void main(String[] args) {
+        new CalculatorOneGUI();
+    }
+}
