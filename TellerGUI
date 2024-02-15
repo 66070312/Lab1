@@ -1,0 +1,49 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class TellerGUI {
+    private JFrame fr;
+    private JPanel up, down, out;
+    private JTextField text;
+    private JLabel balance;
+    private JButton depo, with, ex;
+    
+    public TellerGUI(){
+        fr = new JFrame("Teller GUI");
+        up = new JPanel();
+        down = new JPanel();
+        out = new JPanel();
+        text = new JTextField();
+        depo = new JButton("Deposit");
+        with = new JButton("Withdraw");
+        ex = new JButton("Exit");
+        balance = new JLabel("6000");
+        
+        out.setLayout(new GridLayout(2, 1));
+        
+        up.setLayout(new GridLayout(2, 2));
+        up.add(new JLabel("   Balance"));
+        up.add(balance);
+        up.add(new JLabel("   Amount"));
+        up.add(text);
+        
+        down.setLayout(new FlowLayout());
+        down.add(depo);
+        down.add(with);
+        down.add(ex);
+
+        out.add(up);
+        out.add(down);
+        
+        fr.add(out);
+        
+        fr.setSize(260, 180);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        new TellerGUI();
+    }
+}
