@@ -1,0 +1,71 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class CalculatorSample implements ActionListener{
+    private JFrame fr;
+    private JPanel down;
+    private JTextField text;
+    private JButton[] listb = new JButton[16];
+    
+    private int num1, num2;
+    private char operator;
+    
+    public CalculatorSample(){
+        fr = new JFrame("My Calculator");
+        down = new JPanel();
+        text = new JTextField();
+        
+        String[] forButton = {"7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "X", "0", "C", "=", "/"};
+        for(int i = 0; i<16; i++){
+            listb[i] = new JButton(forButton[i]);
+        }
+        
+        down.setLayout(new GridLayout(4, 4));
+        for(JButton i: listb){
+            i.addActionListener(this);
+            down.add(i);
+        }
+        
+        fr.add(text, BorderLayout.NORTH);
+        fr.add(down, BorderLayout.CENTER);
+        fr.setSize(300, 300);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+        
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e){
+        char check = e.getActionCommand().charAt(0);
+        switch(check){
+            case '1': case '2': case '3': case '4': case '5': case '6':
+            case '7': case '8': case '9': case '0':
+                text.setText(text.getText() + e.getActionCommand()); break;
+            case '/': case 'X': case '-': case '+':
+                num1 = Integer.parseInt(text.getText());
+                text.setText("");
+                operator = check; break;
+            case '=':
+                num2 = Integer.parseInt(text.getText());
+                double result = 0;
+                switch(operator){
+                    case '/' : result = num1/num2; break;
+                    case 'X' : result = num1*num2; break;
+                    case '+' : result = num1+num2; break;
+                    case '-' : result = num1-num2; break;
+                }
+                text.setText(String.valueOf(result)); break;
+            case 'C':
+                num1 = 0;
+                num2 = 0;
+                text.setText(""); break;
+        }
+    }
+    
+    public static void main(String[] args) {
+        new CalculatorSample();
+
+    }
+}
