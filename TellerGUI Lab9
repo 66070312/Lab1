@@ -1,0 +1,68 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class TellerGUI implements ActionListener{
+    private JFrame fr;
+    private JPanel upper, down;
+    private JButton depo, with, exit;
+    private JLabel bala, amou;
+    private JTextField textba, textamo;
+    
+    private double balance = 6000;
+    
+    public TellerGUI(){
+        fr = new JFrame("Teller GUI");
+        fr.setLayout(new GridLayout(2,1));
+        upper = new JPanel();
+        down = new JPanel();
+        depo = new JButton("Deposit");
+        with = new JButton("Withdraw");
+        exit = new JButton("Exit");
+        bala = new JLabel("   Balance");
+        amou = new JLabel("   Amount");
+        textba = new JTextField(String.valueOf(balance));
+        textba.setEditable(false);
+        textamo = new JTextField();
+        
+        upper.setLayout(new GridLayout(2, 2));
+        upper.add(bala);
+        upper.add(textba);
+        upper.add(amou);
+        upper.add(textamo);
+        fr.add(upper);
+        
+        down.add(depo);
+        depo.addActionListener(this);
+        down.add(with);
+        with.addActionListener(this);
+        down.add(exit);
+        exit.addActionListener(this);
+        fr.add(down);
+        
+        
+        fr.setSize(260, 180);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if (e.getSource() == exit){
+            System.exit(0);
+        }
+        double amount = Double.parseDouble(textamo.getText());
+        if (e.getSource() == with && balance - amount >= 0){
+            balance -= amount;
+        } else if (e.getSource() == depo){
+            balance += amount;
+        }
+        textba.setText(String.valueOf(balance));
+        textamo.setText("");
+    }
+    
+    public static void main(String[] args) {
+        new TellerGUI();
+    }
+}
